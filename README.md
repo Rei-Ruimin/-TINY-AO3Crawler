@@ -11,8 +11,8 @@ For the first time to use this software:
 	3. install pipenv
 	code in cmd: pip install pipenv
 
-	4. move to the directory of RPlot
-	code in cmd: cd <the location of RPlot folder>
+	4. move to the directory of AO3 Crawler
+	code in cmd: cd <the location of AO3 Crawler folder>
 
 	5. automatically create a virtual environment and download all packages needed
 	code in cmd: pipenv install
@@ -30,8 +30,8 @@ For the first time to use this software:
 
 For the next time to use the software:
 	
-	1. move to the directory of RPlot
-	code in cmd: cd <the location of RPlot folder>
+	1. move to the directory of AO3 Crawler
+	code in cmd: cd <the location of AO3 Crawler>
 
 	2. activate the virtual environment
 	code in cmd: pipenv shell
