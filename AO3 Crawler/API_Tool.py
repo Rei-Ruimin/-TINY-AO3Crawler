@@ -5,6 +5,7 @@ import pickle
 from PyQt5.Qt import *
 import datetime
 
+
 def generate_proxy_list():
     res = requests.get('https://free-proxy-list.net/', headers={'User-Agent': 'Mozilla/5.0'})
     soup = BeautifulSoup(res.text, "lxml")
@@ -63,14 +64,14 @@ class MyCrawler(QObject):
     session = requests.session()
     basic_url = "https://archiveofourown.org"
     proxy_list = generate_proxy_list()
-    proxy_idx = 0
+    proxy_idx = 240
     progress_msg_signal = pyqtSignal(str)
     ip_blocked_signal = pyqtSignal()
 
     def get_random_proxy(self):
         # myproxy = random.choice(proxy_list)
-        myproxy = self.proxy_list[self.proxy_idx % len(self.proxy_list)]
-        self.proxy_idx += 1
+        myproxy = self.proxy_list[self.proxy_idx]
+        self.proxy_idx = self.proxy_idx % len(self.proxy_list)
         return myproxy
 
     def download_pdf(self, file_url, save_dir, file_name):
@@ -114,15 +115,6 @@ class MyCrawler(QObject):
     # return a set of Article obj
     def parse_search_page_by_page(self, search_url, article_set, topic, save_dir, work_url_set):
         bs = self.getBS(search_url)
-
-        # have to make sure bs is valid
-        # check if the page have clickable previous button
-        try:
-            next_page_tag = bs.find("li", {"title": "next", "class": "next"}).a.attrs['href']
-        # if there's no previous page -- retry page -- ip blocked!
-        # no need to save data
-        except AttributeError:
-            return -1
 
         work_num_str = bs.find(lambda tag: tag.name == "h3" and "Found" in tag.text).get_text().split()
         work_num = work_num_str[0]
