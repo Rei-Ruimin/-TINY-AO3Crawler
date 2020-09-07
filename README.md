@@ -3,6 +3,7 @@ A web scraping software for ao3 only.
 
 
 For the first time to use this software:
+	
 	1. install Python3 and PIP (PIP should be automatically installed with Python 2.7.9+ and Python 3.4+)
 
 	2. download the RPlot folder
@@ -28,6 +29,7 @@ For the first time to use this software:
 	code in cmd: exit
 
 For the next time to use the software:
+	
 	1. move to the directory of RPlot
 	code in cmd: cd <the location of RPlot folder>
 
